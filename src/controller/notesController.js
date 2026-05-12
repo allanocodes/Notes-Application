@@ -51,7 +51,7 @@ try{
 
 
     if(req.params.id){
-       res.status(201).json({
+       res.status(200).json({
       status: "success",
       message: "items inserted successsfully",
       data: {
