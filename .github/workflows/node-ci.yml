@@ -22,5 +22,26 @@ jobs:
       - run: npm test   
 
 
-      -name: run docker file
-       run: docker build -t notes-app .    
+      
+
+      - name: deply  to docker hub
+        run:  echo "${{DOCKER_PASSWORD}}" | docker login  -u "${{DOCKER_USERNAME}}" --password-stdin
+
+
+      - name: Create Docker Image
+        run: |
+         docker build -t allanocodes/notes-app:1.0.0 .
+    
+
+      - name: create latest tag
+        run: |
+         docker tag allanocodes/notes-app:1.0.0 allanocodes/notes-app:latest
+         
+
+      - name: push image to docker hub
+        run: |
+          docker push allanocodes/notes-app:latest
+          docker push allanocodes/notes-app:1.0.0
+
+
+        
