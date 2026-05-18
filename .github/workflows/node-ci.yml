@@ -24,8 +24,8 @@ jobs:
 
       
 
-      - name: deply  to docker hub
-        run:  echo "${{DOCKER_PASSWORD}}" | docker login  -u "${{DOCKER_USERNAME}}" --password-stdin
+      - name: deply to docker hub
+        run:  echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{secrets.DOCKER_USERNAME}}" --password-stdin
 
 
       - name: Create Docker Image
